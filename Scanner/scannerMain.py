@@ -100,26 +100,9 @@ def t_error(t):
 
 lexer = lex.lex()
 
-# textFile = open("other_test.txt", "r")
+textFile = open("test_file.txt", "r")
 
-# data = textFile.read()
-
-data = """
-fn main() {
-
-	// initializing a variable a
-	let variable1 = 5;
-
-	// A type can also be inferred from context.
-	let mut inferred = 12; 
-
-	if n < 0 {
-		inferred = n + 2;
-	} else if n > 0 {
-		inferred = n + 4;
-	}
-}
-"""
+data = textFile.read()
 
 lexer.input(data)
 
