@@ -100,14 +100,11 @@ def t_error(t):
 
 lexer = lex.lex()
 
-textFile = open("test_file.txt", "r")
+textFile = open("sum_file.txt", "r")
 
 data = textFile.read()
 
 lexer.input(data)
 
-while True:
-    tok = lexer.token()
-    if not tok:
-        break
+for tok in lexer:
     print(tok)
