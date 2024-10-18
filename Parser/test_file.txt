@@ -1,0 +1,32 @@
+fn main() int {
+
+	// initializing a variable a
+	let variable1 = 5;
+
+	// A type can also be inferred from context.
+	let mut inferred = 12; 
+
+	if (n < 0) {
+		inferred = n + 2;
+	} else if (n > 0) {
+		inferred = n;
+	}
+}
+
+struct person {
+	let age = 10;
+}
+
+fn returnsBool() boolean {
+	isNum = true;
+	if (isNum) {
+		return true
+	} else {
+		return false
+	}
+}
+
+fn incorrectFunction() boolean {
+	return false
+}
+

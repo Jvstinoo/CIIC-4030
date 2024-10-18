@@ -10,18 +10,20 @@ reserved = {
     "mut": "MUT",
     "pub": "PUB",
     "ref": "REF",
-    "in": "IN",
     "struct": "STRUCT",
-    "type": "TYPE",
     "return": "RETURN",
     "true": "TRUE",
     "false": "FALSE",
     "where": "WHERE",
     "write": "WRITE",
+    "int": "INT",
+    "float": "FLOAT",
+    "char": "CHAR",
+    "boolean": "BOOLEAN"
 }
 
 tokens = [
-    "ID",
+    "IDENTIFIER",
     "NUM",
     "LPAREN",
     "RPAREN",
@@ -42,7 +44,8 @@ tokens = [
     "STAR",
     "SLASH",
     "MOD",
-] + list(reserved.values())
+    "EMPTY"
+    ] + list(reserved.values()) 
 
 t_ignore = " \t"
 
@@ -52,8 +55,7 @@ def t_COMMENT(t):
     r"//.*|/\*[\w\W]*\*/"
     pass
 
-
-t_LPAREN = r"\("
+t_LPAREN = r"\(" 
 t_RPAREN = r"\)"
 t_LCURLY = r"\{"
 t_RCURLY = r"\}"
@@ -74,9 +76,9 @@ t_SLASH = r"/"
 t_MOD = r"%"
 
 
-def t_ID(t):
-    r"[a-zA-Z_][a-zA-Z_0-9]*"
-    t.type = reserved.get(t.value, "ID")  # Check for reserved words
+def t_IDENTIFIER(t):
+    r"[a-zA-Z_][a-zA-Z_0-9]*" 
+    t.type = reserved.get(t.value, "IDENTIFIER")  # Check for reserved words
     return t
 
 
@@ -100,9 +102,6 @@ def t_error(t):
 
 lexer = lex.lex()
 
-textFile = open("sum_file.txt", "r")
-
-data = textFile.read()
 
 lexer.input(data)
 
